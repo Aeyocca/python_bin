@@ -1,0 +1,25 @@
+#!/bin/bash
+#BSUB -J opt_aug_h1
+#BSUB -e /cluster/home/ayocca/eo_files/opt_aug_h1-%J.e
+#BSUB -o /cluster/home/ayocca/eo_files/opt_aug_h1-%J.o
+#BSUB -W 148:00
+#BSUB -M 20G
+#BSUB -R "rusage[mem=20GB]"
+#BSUB -n 24
+#BSUB -q plant
+
+wkdir="/cluster/home/ayocca/01_Rosaceae_Evo/Pyrus/maker/evi"
+
+cd $wkdir
+
+Hello=${Hello:-"Nope"}
+echo "${Hello}"
+
+#time gunzip m64233e_211117_203327.fastq.gz
+
+source /cluster/home/ayocca/.bashrc
+
+PERL5LIB="/cluster/software/c7perl-modules/lib/perl5"
+
+/usr/bin/perl ~/Alan_bin/Augustus-master/scripts/optimize_augustus.pl --species=pyrus_hap1_evi --kfold=24 --cpus=24 --rounds=3 \
+--onlytrain=hap1_evi_sub.gb.train hap1_evi_sub.gb.test >& hap1.log

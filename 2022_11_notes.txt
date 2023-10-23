@@ -1,0 +1,1466 @@
+New month, new me
+
+I am FREEEEEEEEE
+
+I want to:
+- assemble dAnjou / granny smith
+- generate 5 or so research ideas for the ACTG class
+- brainstorm on what a Rosaceae genome evo paper would look like
+	- how to generate genome alignments? What to do with them?
+- How to call ASE in a phased genome
+	- read a bunch
+	- I'm thinking identify 1:1 syntenic orthologs, sooo we just cant deal with tandems?
+
+
+The hic contact maps look great, we should export the fasta assembly created by yahs
+
+A little concerned we are only assembling just over 500bp though, dot plots to gddh13 / honeycrisp may suggest an actionable fix?
+
+
+Since I made no manual edits in juicebox just need to feed .assembly, .liftover.agp and original assembly to get new fasta
+
+also need to get granny smith going through the pipeline so hopefully we have genome for that Monday
+
+To do today:
+- dot plots of "final" anjou against each other and against honeycrisp
+- write out steps for granny smith
+- update anjou methods with whats been done
+- write out analysis final project ideas for class
+- collect RNA-seq / complete list of input for pear annotation
+- busco on "final" pear haps
+
+soooo do we go back and reassemble from hifiasm using a quarter of the omni-C or roll with the one we have... well I'm not 100% sure what went into the assembly in hand sooo probably going to rerun
+
+I have it subsetted to quarter at the moment, see how close that gets to 35X 
+
+750 is the golden delicious estimation but like.. is it really?
+
+Honeycrisp hap1:	674,467,853
+Honeycrisp hap2:	660,227,068
+Hanfu: 				658,899,306
+golden: 			624,851,160
+Cosmic hap1:		675,000,000
+Gala avg:			654,000,000
+
+Sooo a lets consider 675M per haplotype as our goal 
+
+
+675000000 * 35 / 150 * 4 = X lines of omni-c per file
+
+630,000,000
+
+we have just over that about 1.5b at the moment
+
+yupp fresh start for us huh
+
+probably doing instacart, what to eat this week....
+
+Im feeling a good pasta dish but how to get protein..
+
+
+
+gotta make like 2-3 everyday vacpan stuff
+
+
+ugh, need to test waiting until after yahs to drop contigs?
+- what are the statistics of dropped seq for pear and apple?
+- fastqc reports for hifi pear and gs
+
+share hic with jerry
+
+order and orient pear also
+
+
+try to focus HA talk on what I'm currently doing
+
+- think about how to call ASE
+
+we have RNA-seq for pear which is great so we can start testing ASE methods
+- what are our main objectives when testing ASE?
+	- why do alleles differ in expression if they have the same protein...?
+	- what expression profiles are specific to each haplotype?
+	- are there haplotype-specific coexp networks?
+	- is there haplotype dominance? Does it change across tissues?
+- What sort of broader objective could there be? Is there anything other groups might want to do with ASE? Any ASE implications for future analyses / evo hypotheses?
+- comes back a bit to the effect of phased assemblies on biofx mapping statistics
+- what are they maize people doing with NAM expression comparisons?
+
+
+Hmm I should make sure the heterozygosity curve or whatever it is in hifiasm output predicted the peaks correctly
+
+
+- mess with juicebox
+- dot plots with gepard
+- any ideas worth chatting with a hop breeder?
+
+idk about reaching out to Jerry because like... what am I asking, "does this look ok?" Like, don't think I'll get any actionable advice 
+
+yea there's nothing on the hic map that I think I can do anything about
+
+racon dropped like 6Mb of sequence...
+
+
+IF YOU HAVE ANY QUESTIONS PLEASE CALL SERVICE
+FINANCE COMPANY AT 866-254-0497.
+
+how to make payments
+
+The first part of the Traceback. might be your issue, a problem with importing the "to_categorical" module. Probably an issue with relative paths? Try starting a python instance and importing that module? tensorflow might be installed somewhere different or not at all
+
+look for anything matching to_categorical in this directory home/student/anaconda3/envs/EDTA/lib/python3.10/site-packages/tensorflow/python/keras/utils
+
+
+gepard
+
+hmmm hap1 scaff1 probably isnt hap2 scaff1 huh...
+
+maybe I can just run it locally
+
+wait.. maybe the scaffolds do match... try it out
+- Huiting asked how to know if we need to flip chromosomes
+- generate analysis ideas 
+- work on your elevator pitch, that was terrible, what did Alex add, "predictive model of ASE"
+
+
+11-8-23
+
+
+7673475
+
+866-254-0497.
+
+
+bsub -env BAM_ONE='~/01_Rosaceae_Evo/Malus/Granny_Smith/Malus_gs_hic_mapped_filt_R1_hap1.bam',BAM_TWO='~/01_Rosaceae_Evo/Malus/Granny_Smith/Malus_gs_hic_mapped_filt_R2_hap1.bam',OUT='~/01_Rosaceae_Evo/Malus/Granny_Smith/Malus_gs_hic_mapped_filt_sort_markdup_hap1.bam',ref_faidx='~/01_Rosaceae_Evo/Malus/Granny_Smith/Malus_gs_35x_omni.asm.hic.hap1.p_ctg.50kb.racon.fasta.fai' < ~/sub_scripts/merge_bam.bsub
+
+
+what to do for the next 30 minutes, figure out gepard with a different word size
+
+lets try dotplot with scaff1 between the two haplotypes
+
+
+java -cp /cluster/home/ayocca/miniconda3/envs/genome_tools/share/gepard/dist/Gepard-2.1.jar org.gepard.client.cmdline.CommandLine -seq ~/01_Rosaceae_Evo/Pyrus/hic_maps/Pyrus_hap1.FINAL.fasta ~/01_Rosaceae_Evo/Pyrus/hic_maps/Pyrus_hap1.FINAL.fasta -safile ~/01_Rosaceae_Evo/Pyrus/hic_maps/Pyrus_hap1.FINAL.fasta.sa -sasecondseq ~/01_Rosaceae_Evo/Pyrus/hic_maps/Pyrus_hap1.FINAL.fasta.sa -matrix ~/miniconda3/envs/genome_tools/share/gepard/resources/matrices/edna.mat -outfile Pyrus_dotplot_20.png -word 20
+
+
+maybe tonight I could check what word sizes they might have used in a previous publication, then tomorrow can ask directly
+
+
+ummmm I can't make dot plots.. try making it with the bacterial genomes..
+
+try honeycrisp chrom 1
+
+yay its not just me! honeycrisp is also a giant black block XD
+
+uh oh, word size 20 worked for honeycrisp, lets try the hifiasm assembly
+
+oh you know what? Its probably just not the friggin homolog
+
+great sooo how to figure out which is the homolog? I did things with the whole genome huh that should work
+
+whole genome plot looks bad, could maybe guess on a few pair of homologs, but we need to figure out homologous chromosomes, how to do that?
+
+liftover annotation then ribbon plot?
+
+Mummer dot plot?
+
+Lets try mummer first, or at least get that running in the background first
+
+also get whole genome dot plot on honeycrisp working
+
+can probably iteratively make dot plots? Lets try scaff1 hap1 against all 17 scaffs with wordsize 20
+
+
+yea... everyone using gene synteny..
+
+might be an issue with hap1_scaff1.fasta, its 60Mb in pyrus
+also hap1 scaff 17 is 1.5Mb.. I thought we had 17 large scaffolds, nope, we had 16, so split that first scaffold and remake Pyrus hap1
+
+then loop and dotplot hap1_scaff1 to each of the 17 in hap2
+
+Hmm, seems hap1 scaff1 wasnt split correctly again, well at least this confirms the misjoin and confirms for the dot plots I just have to pairwise things until we get hits ahahaha.
+
+
+Now to make the homolog map!
+This seems a bit tedious making dot plots and scanning...
+But quicker to do that than automate at this point huh
+
+lets double check scaff1 and 2 were split how we expected then we can loop, every loop we can drop one
+
+
+pangenome methods for wheat species / turf grass (wait which? monocots either way)
+
+alrighty what to do what to do, tomorrow spend two full hours on bbpan lordy please
+
+at least its a hap2 issue then, so align hap2_scaff11 (to chr14A) and hap2_scaff15 (to chr4A)
+
+scaffold_13
+scaffold_16
+
+
+hap2_scaff11
+hap2_scaff15
+
+I can move that around in juicebox, no?
+
+Dot plots to honeycrisp, only 34 of them to make, and anything with a forward slash orientation, reverse complement, that should fix it right? Make sure
+
+Hap1 scaffolds that need flipped:
+1
+5
+6
+8
+10
+12
+13
+14
+15
+17
+
+yea about random
+
+so does reverse complementing work?
+
+uhh do we need to ensure its stranded correctly also? I feel thats not a terribly difficult task.. but how to make sure?
+
+Maybeeeee we just have to do an annotation liftover, get coords of genes and look at manual alignment.. There must be a computational way to get an aligned region, right? If I get the suffix arrays downloaded locally I could load into gepard gui but can't figure out how to adjust the word size..
+
+Could pick a random 1Mb region and run muscle, how long does it take to align 1Mb?
+
+to do today:
+- determine if reverse complementing affects dot plot
+- see how long muscle 1Mb aligment would be to see if we also need to reverse the sequence
+- keep granny smith chugging through the pipeline
+- 
+
+ok maybe my reverse complement script just sucks XD
+
+Wait can't I just flip them in juicebox?
+
+
+create dot plots for hap2 against HC
+
+
+This should be a fun translation...
+hap1    hap2
+scaffold_1      scaffold_10
+scaffold_2      scaffold_7
+scaffold_3      scaffold_1
+scaffold_4      scaffold_2
+scaffold_5      scaffold_4
+scaffold_6      scaffold_3
+scaffold_7      scaffold_8
+scaffold_8      scaffold_5
+scaffold_9      scaffold_12
+scaffold_10     scaffold_9
+scaffold_11     scaffold_6
+scaffold_12     scaffold_13
+scaffold_13     scaffold_11
+scaffold_14     scaffold_16
+scaffold_15     scaffold_14
+scaffold_16     scaffold_15
+scaffold_17     scaffold_17
+
+
+hap2	honeycrisp hap1
+
+
+Pyrus_hap1      HC_hap1
+scaffold_1      chr16A
+scaffold_2      chr13A
+scaffold_3      chr15A
+scaffold_4      chr5A
+scaffold_5      chr11A
+scaffold_6      chr10A
+scaffold_7      chr7A
+scaffold_8      chr3A
+scaffold_9      chr9A
+scaffold_10     chr2A
+scaffold_11     chr17A
+scaffold_12     chr12A
+scaffold_13     chr14A
+scaffold_14     chr6A
+scaffold_15     chr1A
+scaffold_16     chr4A
+scaffold_17     chr8A
+
+
+
+hap2 scaffolds that need flipped:
+
+
+This afternoon:
+- manually rename chromosomes
+- get granny smith rolling
+
+hmm do we go back and fix the inversion by precisely identifying the breakpoints? Nope
+
+I think Pyrus is ready to ship baby
+
+So check on granny smith bam merging in an hour, sooo fantasy football stuff then blueberry stuff
+
+need to split northern and southern, then need to create a binary matrix form
+
+I have a genome for Liberty but don't think I have an annotation but there are others I don't have an annotation for also so lets keep rolling
+
+
+Well for the meeting tomorrow lets doooooo everything together, how to get a pangenome binary matrix
+
+
+what needs to happen to push vaccpan to preprint? I think I can push it out by the end of the weekend to Pat / Adrian to add things
+
+to do before the meeting:
+- core genome modeling for NHB / SHB
+- complete list of analyses and write ups to be done
+- get feature distribution figs for NHB /SHB
+
+hmm I should migrate all my stuff too
+
+Think I can do the modeling with just the binary matrix in R, can do that while annotate script runs but a little worried annotate script is stuck somewhere, never took this long to run before
+
+bsub -env "BAM_ONE='/cluster/home/ayocca/01_Rosaceae_Evo/Malus/Granny_Smith/Malus_gs_hic_mapped_filt_R1_hap2.bam',BAM_TWO='/cluster/home/ayocca/01_Rosaceae_Evo/Malus/Granny_Smith/Malus_gs_hic_mapped_filt_R1_hap2.bam',OUT='/cluster/home/ayocca/01_Rosaceae_Evo/Malus/Granny_Smith/Malus_gs_hic_mapped_filt_sort_markdup_hap2.bam',ref_faidx='/cluster/home/ayocca/01_Rosaceae_Evo/Malus/Granny_Smith/Malus_gs_35x_omni.asm.hic.hap2.p_ctg.50kb.racon.fasta.fai'" < ~/sub_scripts/merge_bam.bsub 
+
+
+
+apparently annotate script really just does take forever which still. doesn't make sense to me..
+
+Ok, make some tables on percentages of core / variable across NHB/SHB and haplotypes
+
+Then list plan for gene statistic calculations / rest of manuscript, this is coming together nicely, any other specific analyses or things that need clearing up? don't think so
+
+
+well I'm not getting it done by the meeting but things we can start working on today:
+- pangenome modeling
+- submit gene_stat calculations to cluster because its seems it is running but just taking a while
+
+
+hap2 I input R1 for both, for hap1, lets start making dot plots compared to HC
+
+iteratively or.... lets do the sleep think so it finishes in a few hours, lets do 5 at a time to reduce time for the next cycles
+
+scaff12 hap1 is probably honeycrisp scaff17 or 1
+scaff13 also missing a hit
+
+ugh, we have a good bit of assembly errors I need to document, then ask Jerry about
+
+- email scotty to write up methods or if want him to do a small write-up
+- collaboration testing membership of anthocyanin pathway
+	- "mid November"
+- change permissions on my lab directory
+- Pat to do:
+	- phylogeny figure
+	- orthology as a future aim but maybe not for this manuscript
+
+-
+
+
+have to get the annotation pipeline running on the HA cluster since losing access to MSU at the end of the month]
+
+
+gotta figure out how to calculate ASE also
+
+standing to do:
+- VaccPan
+	- annotate disease resistance genes
+	- core modeling
+	- feature distributions
+	- characterize anthocyanin genes
+- Rosaceae
+	- hic maps for malus
+	- collect annotation materials / start annotation on Pyrus
+	- expression experiment ideas for the class,,, why is that so popular its lame
+- start christmas lists
+- register for UGA symposium, slack Alex about it Monday
+- pay electric bill
+
+
+
+The difference in file size for hic files between hap1 and hap2 is a little concerning, lets check them out
+
+Yea, assembly file looks ok? Lets redo that last step? are bam files similar? maybe I just input the wrong number
+
+maybe the filtering step fucked up resubmit that
+
+
+
+soooo I have some apparent misassemblies relative to honeycrisp assembly, but how to know if its real?.....
+
+how to decide when to reflip things?
+
+Lets make dotplots of hap1 vs. hap2, then 
+
+
+
+Malus_gs_hap1   HC_hap1
+scaffold_1      chr15A
+scaffold_2      chr16A
+scaffold_3      chr5A
+scaffold_4      chr10A
+scaffold_5      chr13A
+scaffold_6      chr11A
+scaffold_7      chr2A
+scaffold_8      chr3A
+scaffold_9      chr9A
+scaffold_10     chr7A
+scaffold_11     chr6A
+scaffold_12     chr1A
+scaffold_13     chr17A
+scaffold_14     chr14A
+scaffold_15     chr12A
+scaffold_16     chr4A
+scaffold_17     chr8A
+
+
+GOOOO
+
+dot plots between hap2 and honeycrisp hap1
+
+
+- check out self dot plots also
+- register for UGA symposium, slack Alex about it
+
+Gotta stay organized with what dot plots / genome edits we want
+
+Pyrus
+- dot plots against self
+- map HiFi back to assembly and look for windows of double / half depth
+
+Malus
+- go through "inversions" relative to honeycrisp in hic data
+
+
+
+
+Malus_gs_hap2	HC_hap1
+scaffold_1	chr16A
+scaffold_2	chr15A
+scaffold_3	chr5A
+scaffold_4	chr10A
+scaffold_5	chr11A
+scaffold_6	chr13A
+scaffold_7	chr2A
+scaffold_8	chr3A
+scaffold_9	chr6A
+scaffold_10	chr7A
+scaffold_11	chr9A
+scaffold_12	chr17A
+scaffold_13	chr1A
+scaffold_14	chr12A
+scaffold_15	chr14A
+scaffold_16	chr4A
+scaffold_17	chr8A
+
+Gene regulation evolves rapidly on degenerating Y chromosomes. Our understanding of this
+220 process has largely been informed by characterizing gametolog-specific gene expression from
+221 degenerating sex chromosomes (Muyle, et al. 2012; White, et al. 2015; Beaudry, et al. 2017; Muyle, et al.
+222 2018; Martin, et al. 2019; Veltsos, et al. 2019)
+
+how do they call sex-specific expression
+
+
+Simulations indicate rapid expression loss from the Y chromosome is driven by the divergence of
+238 cis-regulatory elements on both the X and Y chromosomes (Lenormand, et al. 2020; Lenormand and
+239 Roze 2022)
+
+to be flipped
+
+oh man...
+
+
+get a script to extract the approximate region in both honeycrisp and granny smith to get approximate break points
+
+I'm just going to make the breakpoints and flip things in juicebox instead of writing a script to do it huh... but I can..
+
+So, recreate scripts given approximate region to extract fasta, thats one module
+
+apply module to honeycrisp and grannysmith
+
+download those locally and use local gepard to make a dot plot
+
+check exact breakpoints using gepard
+
+make another script to invert a region given exact breakpoints, putting a 10k N buffer on either end
+
+
+very possible
+
+also need a way to fix alternative haplotypes, these are the two main issues I will adjust and then move on with, If I kick ass I can get these done today
+
+1.5 - 2.5 / 5
+
+
+hmm 10Mb dot plot locally might still take a bit...
+
+approximate breakpoint I 
+
+776532
+
+2737606
+
+
+maybe its the buffer thats breaking the do plot? doesn't make sense but lets check it
+
+
+inversions should just be reversed, not reversed and complemented huh, why get no hits...
+
+I still think we just need to reverse it though, how to proof this at a smaller scale
+
+could do the first 100kb of scaff2 and HC_scaff16, those align pretty well, can try a manual inversion
+
+well reverse complementing worked but that makes no damn sense.. ah well
+
+
+sooooo Imma have to rerun the friggin arima genomics pipeline again at the end of this huh, oh whale
+
+4, 4.5 / 6.75
+
+24800000
+28000000
+
+
+2.75
+3.25 
+
+16900000
+20000000
+
+
+Im dumb, measured from the wrong side lol
+
+3.5 - 4 
+
+
+but I guess its too late, almost have the whole scaffold dot plot generated
+
+21500000
+24600000
+
+90Gb of data per cell
+
+uhh which inversion is which
+
+
+scaff6 is 230974110 - 272856827
+
+
+241960000
+
+hic estimate 10985890
+
+we have the numbers to pinpoint which inversion is which
+
+hic bowtie motif from 30.9 - 33.4
+
+dot plot inversion from ~25 to 26....
+
+
+hic bowtie motif from
+
+239435001 - 241955001
+
+
+scaffold allegedly spans 230947110 - 272856827
+
+so flip from 8487891 to 11007891
+
+
+so whats this region look like hap1 vs. hap2 ?
+
+This is getting messy
+
+Lets only fix the first inversion
+
+Lets only fix things with obvious bowtie motifs, and 3rd haplotypes
+
+then redo the hic stuff and dot plots and make other calls
+
+
+bowtie motif for scaff 16:
+
+start 600220001
+end 603985001
+
+scaffold starts at 589204945
+
+so invert 11015056 to 14780056
+
+
+6 to 12 mil hap1_scaff14
+17-23 on hc hap1 chr 14A
+
+4018239
+
+
+alright, now to code up a way to keep one end, wait what does this even look like in the assembly?
+
+hold up is this an issue in honeycrisp and not in granny smith? No its def GS because self dot plot showed it
+
+11063380
+
+guess I should estimate based on self dot plot instead of to honeycrisp huh
+
+left:	10013131
+midpoint: 11064289
+right:	12179542
+
+
+well it took all day but I have all my obvious hap1 issues worked out for round 1, next is to remap the hic data and check if we resolved any of the bowtie motifs, if so, move onto hap2, then once hap2 looks alright, try them both together and search for botwie motifs in any apparent inversions between haplotypes.
+
+tonight:
+- get hic going
+- brainstorm what the hell to talk about in class tomorrow, we have relatively limited expression data
+
+- calculating allele-specific expression (this one is tough), yea idk how to do this
+- build a coexpression network using Chenxin's pipeline, nope too complicated, lets do WGCNA
+- use publicly available RNA-seq to assess differential expression
+	- map using kallisto, DE using EdgeR or DESeq
+
+also, we don't have a friggin annotation, lets just use the liftover annotation I guess
+
+
+maybe throw some slides together tonight about assembly errors ? That would be a good way to kill about 15 minutes
+- what is a dot plot, what are hic plot issues we can run into
+
+
+FNF for: 13 6 11 23 16 5 5 9
+FNF aga: -1 24 10 9 3 10 4
+
+2 win
+sat week 7 against KC, lost anyway
+started on their bye, won by 50pts
+
+TT for: 14 5 19 20 3 7 15 8
+TT aga: 2 12 11 12 10 -3 8 5 9
+
+1 win
+sat on bye, lost by 76pts
+
+Sooo what are we talking about tomorrow?
+
+class projects, everyone wants to make expression heatmaps / expression this and that
+- tissue specific expression
+- WGCNA coexp net analysis
+- 
+
+- share HC genome with wren and Brannan
+- 
+
+hap1 ready for remapping hic, need to concatenate everything
+
+.. are we cutting bait with extra contigs? Lets not yet
+
+Lets work through haplotype 2
+
+10 - 20
+
+15 - 25
+
+
+breakpoints
+
+327590001
+
+320860001
+
+feature 
+308781374 - 345303653
+
+12078627 - 18808627
+
+28 - 35
+
+4 10
+
+
+4572148
+7031241
+
+at 4Mb to each
+
+
+20 - 27
+
+8 - 15
+
+3341156, add 20Mb
+5173879
+
+repeats flanking this inversion which is pretty cool
+
+Oh I have to dot plot pyrus..
+
+
+hap2	HC_hap1
+scaffold_1	chr15A
+scaffold_2	chr5A
+scaffold_3	chr10A
+scaffold_4	chr11A
+scaffold_5	chr3A
+scaffold_6	chr17A
+scaffold_7	chr13A
+scaffold_8	chr7A
+scaffold_9	chr2A
+scaffold_10	chr16A
+scaffold_11	chr14A
+scaffold_12	chr9A
+scaffold_13	chr12A
+scaffold_14	chr1A
+scaffold_15	chr4A
+scaffold_16	chr6A
+scaffold_17	chr8A
+
+
+
+Pyrus_hap1	Pyrus_hap2
+scaffold_1	scaffold_10	
+scaffold_2	scaffold_7
+scaffold_3	scaffold_1
+scaffold_4	scaffold_2
+scaffold_5	scaffold_4
+scaffold_6	scaffold_3
+scaffold_7	scaffold_8
+scaffold_8	scaffold_5
+scaffold_9	scaffold_12
+scaffold_10	scaffold_9
+scaffold_11	scaffold_6
+scaffold_12	scaffold_13
+scaffold_13	scaffold_11
+scaffold_14	scaffold_16
+scaffold_15	scaffold_14
+scaffold_16	scaffold_15
+scaffold_17	scaffold_17
+
+
+ok, scaff 1 and 10 are not homologs
+
+check out two inversions on hap1 scaff 4 in pear
+
+bsub -env "BAM_ONE='/cluster/home/ayocca/01_Rosaceae_Evo/Malus/Granny_Smith/Malus_gs_hic_mapped_filt_R1_hap1_v1.2.bam',BAM_TWO='/cluster/home/ayocca/01_Rosaceae_Evo/Malus/Granny_Smith/Malus_gs_hic_mapped_filt_R2_hap1_v1.2.bam',OUT='/cluster/home/ayocca/01_Rosaceae_Evo/Malus/Granny_Smith/Malus_gs_hic_mapped_filt_sort_markdup_hap1_v1.2.bam',ref_faidx='/cluster/home/ayocca/01_Rosaceae_Evo/Malus/Granny_Smith/Malus_gs_hap1.v1.2.fasta.fai'" < ~/sub_scripts/merge_bam.bsub 
+
+bsub -env "BAM_ONE='/cluster/home/ayocca/01_Rosaceae_Evo/Malus/Granny_Smith/Malus_gs_hic_mapped_filt_R1_hap2_v1.2.bam',BAM_TWO='/cluster/home/ayocca/01_Rosaceae_Evo/Malus/Granny_Smith/Malus_gs_hic_mapped_filt_R2_hap2_v1.2.bam',OUT='/cluster/home/ayocca/01_Rosaceae_Evo/Malus/Granny_Smith/Malus_gs_hic_mapped_filt_sort_markdup_hap2_v1.2.bam',ref_faidx='/cluster/home/ayocca/01_Rosaceae_Evo/Malus/Granny_Smith/Malus_gs_hap2.v1.2.fasta.fai'" < ~/sub_scripts/merge_bam.bsub 
+
+same shit for pyrus
+
+
+what are you doing?
+
+knee deep in genome assembly at the moment, trying to develop methods (for me) for allele-specific expression across resolved haplotypes in trees, hope to generate trio bins to understand ASE across different crosses with shared parentage,
+
+long term goal of developing a model to predict ASE and identify factors controlling ASE that would need accounting in future GP models
+
+hap1 scaff4 looks like it still has an issue
+
+and one on scaff 9
+
+potentially an 8 Mb misassembled inversion on scaff 11
+
+definitely one on scaff 16, like how did we miss these? did Yahs re-introduce them?? doubt it
+
+now the fucking scaffold names are fucked up
+
+big one on 20
+
+
+ok... maybe Alan fucked something up concatenating the fixed fasta sequences....
+
+but that wouldn't fuck up the inversions would it?
+
+well going to scrap it anyway
+
+(genome_tools) [ayocca@int0002 Granny_Smith]$ grep -c ">" Malus_gs_hap1.v1.2.fasta
+101
+(genome_tools) [ayocca@int0002 Granny_Smith]$ grep -c ">" Malus_gs_35x_omni.asm.hic.hap1.p_ctg.50kb.racon.fasta
+100
+
+yea how did this happen...
+
+
+lets try again to make the manually edited thing
+
+something is messed up in scaff 14
+
+its my third haplotype script, missing a line return
+
+haplotype 2:
+scaff3 inversion
+scaff5 inversion
+scaff9 6Mb inversion
+scaff12, maybe inverted centromere?
+scaff15, inversion
+scaff18, probably another
+
+
+... did I forget the other scaffolds!??!?!?
+
+sure did
+
+well lets just scrap this, try again tomorrow
+
+almost no hic data mapped to the extra scaffolds in hap1, maybe we just move forward without, its about 15Mb of seq or 2.5%
+
+yea if thats the only issue, lets move forward without, worst case scenario I have them
+
+so, dot plots to honeycrisp to check inversions,, why the hell are the contig names messed up...
+
+like.. were these not in the last one also?
+
+check if they were in the last one
+
+ok there are still a few in the first round not revealed by the dot plots, how to prove they are real??????
+
+what if the bowties aren't inversions?
+
+I'm pretty done, if the inversions aren't real, I can't really fix them
+
+make dot plots of hap1 vs. hap2 in these regions and vs HC hap1 and make a judgement call
+
+
+lets split the first two scaffolds, then start making dot plots against honeycrisp hap1 and hap2, hopefully homologs kept up? probs not though...
+
+also can start working on pyrus
+
+just to be sure redownload hic stuffs
+
+lets do 3 to 5
+
+
+okay scaff1 has no honeycrisp homolog, wtf, this could be super interesting though, ah nevermind probably just switched 1 and 2
+
+I'm ready to move haplotype 2 to final, v1.3, ugh pending self dot plots and I guess comparison to hap1
+
+hap2 need flipped to orient with HC:
+1,3,4,5,7,8,12,13,
+
+lets make hap2 to HC hap2 dot plots
+
+want to orient pear realtive to honeycrisp though those dot plots arent very pretty 
+
+Ok final check is hap1 vs. hap2
+
+are all these hap2? did yahs do this? Did I ass the right assembly to v1?
+
+
+maybe pear is just fucked
+
+use gepard to manually edit inversion hap2_scaff16
+
+so I think I fixed them all in juicebox, lets check
+
+I think we are final with the assembly
+
+We have a liftover annotation that can be used for the ribbon plots
+
+have to reorient to HC first actually
+
+get hap2 to honeycrisp table
+
+
+before Dec 1st:
+- table of assembly stats vs. honeycrisp for lay audience
+
+come on man, you can get the annotation started before heading back to GA....
+
+for Pyrus at least, then we have to figure out what the hell is going on with all these inversions
+
+table needs to show that granny is near honeycrisp or better to say "these are the best Apple genomes out there"
+
+report is just the apple stuff
+
+do a liftover annotation with honeycrisp to make ribbon plot
+
+Table is on page 7 of the report draft
+
+they want to add the Bartlet re-annotation to the danjou genome release and im like... that is soooo much more work than I wanted to do
+
+
+to annotate pears:
+- need to assemble RNA-seq transcripts for all the tissue types we have, use reference-guided assembly map using hisat2, the assemble using stringtie
+- use proteins from arabidopsis
+- default repeatmasking?
+	- maybe can just run EDTA straight up, actually we have to repeat mask first, but will probably finish by tomorrow since 
+	
+	
+pear to flip:
+- 17, 16, 12, 10, 9, 7, 6, 1
+
+hap2
+
+H1	H2
+1 10
+2 7
+3 1
+4 2
+5 4
+6 3
+7 8
+8 5
+9 12
+10 9
+11 6
+12 13
+13 11
+14 16
+15 14
+16 15
+17 17
+
+H1	HC
+1 16
+2 13
+3 15
+4 5
+5 11
+6 10
+7 7
+8 3
+9 9
+10 2
+11 17
+12 12
+13 14
+14 6
+15 1
+16 4
+17 8
+
+flip:
+hap2:
+- 7 17 16 15 14 13 12 11
+and small arm of 10
+
+hap1:
+- 1 
+
+Now to rename based on honeycrisp
+
+
+
+EDTA still running, just thought I can monitor live output myself by file redirect
+
+
+well lets work on Malus genome finishing while EDTA keeps running
+
+can also run genome busco since genomes are "final"
+
+where were we with Malus?
+
+Uhhh scratch everything? what are our  main issues?
+
+get hap1 vs. HC
+
+recheck translation for:
+
+- chr9 5 6 14 15 12 13 11
+
+
+hap2 to flip
+- 1 3 4 5 7 8 12 13
+
+
+check small arm of chr6
+
+otherwise ready to rock with hap2? lets check it against hap1
+
+not enough evidence to do anything about it, lets do flips
+
+can check round_3 after we flip hap1
+
+ 5  6  11 12 13 14 15
+ 11 13 9  17 1  12 14
+hap1 flip:
+- 8 7 4	3 1 13 12 5
+
+check small arm chr11
+
+fuck, all these dot plots is wrong? wait why did we remap?
+
+lets redo it ourselves
+
+so with Malus
+hap1 flip:
+- 1 14 12 11 6 4
+check inverison on 6, 1
+
+
+yea we should fix the one on 6 and then move on
+
+extract scaff 6, samtools to get rough area, download locally to get breakpoints, invertseq to complete edit, throw back in, the dot plots between haplotypes before renaming and moving to edta for GS
+
+so we are all flipped and now to just rename
+
+am I cool rolling with just the 17 psuedo chromosomes? I think thats what HC was released with but I may want to run them through EDTA
+
+honeycrisp was released with all extra scaffolds, so.... I should
+
+chr8A is fucked too somehow, thought that was only an issue with the althap script
+
+is it something with the rename script?
+
+must have been something adding extra scaffold? idk, can reset though think we are good
+
+well EDTA still running after the weekend
+
+maybe turn off the evaluate parameters and sensitive
+
+also should have added the live e/o streaming..
+
+also did I finish both genomes? def finished malus, what about pyrus?
+
+Hmm, I like the idea of how to study convergent genomics, where the sequences are not orthologous, or mapping strategies don't work well in regions of degeneracy or low conservation
+
+its like a pet project I don't have a great idea on how to solve, but I can list its applications if we were to figure it out?
+
+Lets go! ready to annotate!
+
+Soo need to run EDTA in quick mode (no sensitive or evaluate) and it finishes in like an hour on 10 threads
+
+need to assemble the transcriptomes.. hap2 or 1 ? both? interesting question, how different are the transcriptomes given different references?
+
+I don't think that question is worth my time and contributions of more RNA-seq evidence probably contribute more
+
+Yea.. lets scrap the hap1 EDTA runs, can run over thanksgiving maybe
+
+well hisat should finish shortly so get stringtie scripts
+
+can probably run that on the cmd line huh
+
+need to sort
+
+need to do the blueberry stuff
+
+so, do all the feature distribution stuff and core gene percentage
+- also need to orthofinder those gene lists for collaborative project, we have that file? can parallelize the blast stuff while we're at it, need to change permissions, you know what? lets keep my hpcc account active until the paper is accepted so I don't have to do the file transfers? Or I can just transfer stuff to hudsonalpha, or just keep a local copy,
+
+lets transfer stuff after this week, work on hpcc for this week
+
+
+what do I need on the gdrive, should migrate the vaccpan manuscript to my personal 
+
+tonight:
+- model core genome size for blueberry
+gets computationally intractable up to 24? No its still tractable just might have to sit a minute 
+
+
+wait to generate the heatmap, I can just pull the binary pan mats!
+
+looks suspiciously different with draper included
+
+do PCA to confirm draper is weird
+
+Well what to do on this manuscript, timeline, and days set aside to work on it:
+- model pangenome
+- core/var gene statistics
+- tracks to add on circos plot
+	- core genes
+	- var genes
+- finalize fig on anthocyanin biosynthesis
+- annotate R genes for. every. gene.
+
+sooo do we have to remove Draper? what happened here? check p1, same deal
+
+
+to do today:
+- get all the transcriptomes asssembled
+- look for RNA seq sheet that Sarah used
+
+this is hanging
+
+map_hic_pyrus_R1_hap1_v1.2
+
+cancel and resub, with live eo file!
+
+check which have the EDTA output we want
+
+hap1_extra scaff didnt finish but hap2 extra did
+
+
+outline of talk for HA:
+- I assembled some genomes, 
+- a few things about assembly trouble shooting
+- annotation results
+- percentages of genes showing ASE
+- any class-specific analyses
+- can we annotated ACRs using some ML approach thats available?
+- maybe call CNS and see if those diffs across haps associated with expression diffs?
+- assemblytics between haps is interesting
+- evidence for shared WGD?
+	- karyotype ribbon plott
+- Pyrus centromeres are bigger.. cool?
+- predict core / var genes? No would take forever, would it not?
+
+bsub -q c7highmem -env "BAM_ONE='/cluster/home/ayocca/01_Rosaceae_Evo/Pyrus/Pyrus_hic_mapped_filt_R1_hap1_v1.2.bam',BAM_TWO='/cluster/home/ayocca/01_Rosaceae_Evo/Pyrus/Pyrus_hic_mapped_filt_R2_hap1_v1.2.bam',ref_faidx='/cluster/home/ayocca/01_Rosaceae_Evo/Pyrus/Pyrus_hap1_v1.2.rename.fasta.fai',OUT='/cluster/home/ayocca/01_Rosaceae_Evo/Pyrus/Pyrus_hic_mapped_filt_sort_markdup_hap1_v1.2.bam'" < ~/sub_scripts/merge_bam.bsub 
+
+runs for an hour an fails..
+
+lets get a maker container going? can we do conda? Conda would be nice to get augustus, snap, etc
+
+today:
+- check if liftover annotation has protein sequences...
+
+so my current plan is to map the RNA seq to the genomes haps combined and check mapping statistics against mapping solo
+
+
+For vaccpan:
+- remove Draper from the analyses, model core / variable genomes
+
+these alignment rates are pretty horrible
+
+ugh, going to use container, I know the container works,
+
+problem with converting gene ids to go terms for go analysis, the whole "figure it out" process ain't going well, I think I will just show them how to do it, need to get them myself first but don't have a liftover annotation, lets just get the liftover annotation since I will do this for granny smith also
+
+today:
+- create a liftover annotation for pear from bartlet
+- create a liftover annotation for gs from hc
+- blast pear liftover to arabidopsis to call go terms
+- start downloading available RNA-seq with VARUS
+
+yea I don't think Alex gave them a protein file, can get a liftover bed annotation but also need to extract cds then translate to protein
+
+is this all harder than doing a first pass evidence based annotation... well I have to do dot plots but can get a quick one
+
+do I need to annotate the RNA seq or can I provide as est?
+- think it has to be assembled?, go for it to start
+
+
+one thing at a time, lets just try.. ugh i feel like im a half day away from a finalized version of the genome, but the annotation is still far away. so lets just quickly annotate the version we annotated latest pear version we have.. or should we do what they've been working with, lets do what they've been working with
+
+was it quarter omni or half omni? half
+
+
+how many scaffolds to annotate... lets do the first 30?
+
+ugh, do we just do the first 20 contigs each should give students enough data to put something together
+
+ugh, expression stuff too, maybe the liftover annotation is better
+
+alrighty how the fuck do I make a chain file
+- a pairwise alignment. lovely
+
+Ok... just get the liftover annotation bed/gff file from a student, going to back translate by samtools extract then... something else to get to protein sequences
+
+so today we aren't getting any liftover done, but we can start to download pear RNA-seq with varus, apple RNA-seq, work through finalizing pear genome
+
+going to check out the juicer plot while in the background starting to check dot plots
+
+Uhhh, lets see if the scaffold matching is the same
+
+base) [ayocca@int0001 round_3]$ ~/Alan_bin/yahs/yahs ../../Pyrus_hap1_v1.2.rename.fasta ../../Pyrus_hic_mapped_filt_sort_markdup_hap2_v1.2.bam -o Pyrus_hap2_v1.2 
+[I::main] dump hic links (BAM) to binary file Pyrus_hap2_v1.2.bin
+[W::dump_links_from_bam_file] sequence "chr15B" not found 
+
+
+nice! it looks like the translations work, significantly less computation time needed	
+
+seems like we just need a few chromosome arms flipped and going to go on with our lives
+
+scaff1 small arm
+something weird with scaff 2 small arm
+
+
+need flipped to orient with HC:
+hap1:
+- 1,6,7,9,10,12,16
+hap2:
+- 7,12,13,14,16,17
+
+scaff11 and 15 need both chrom arms flipped, then total flipped to orient with HC
+- check scaff12 small arm
+
+
+need to recreate assembly, take scaff14 and scaff11 out, flip inversion, rename scaffolds, and put scaff14 back in, then we have a final version!
+
+
+
+
+
+
+
+
+flip in juicebox, do the scaff14 inversion on cmd line, and paste together
+
+so redo hap2 assembly, but probably have to fix 3rd hap on scaff6
+
+today:
+- backup msu gmail stuff
+
+3rd hap on hap1 scaff_11
+
+hap2:
+- two 3rd haps on scaff 5.. i think, look closer
+- as expected, also on scaff 6
+
+nice thats all
+
+soooo lets work on hap1 for now, check out scaff 11 breakpoints, then finalize
+
+how do I tell the difference between a 3rd haplotype and a true tandemly duplicated region?
+
+well putative breakpoints for hap1 scaff11:
+left - 1053728
+mid - 1628071
+right - 2163496
+
+
+lets finish up hap 1
+
+double check what the hic looks like
+
+left - 1563461 + 22
+mid - 2437043 + 22
+right - 3280395 + 22
+
+left - 26827767
+mid - 26869830
+right - 26902376
+
+left - 11799692
+mid - 12202873
+right - 12634800
+
+allll gooooodddd
+
+oh yea we renamed things to homologs
+
+hap1 chrom13A... does the small arm need flipped? ... maybe not, no chrom13 small arm is a mess
+
+hap2 chrom 3, looks like alt hap
+	- uh oh, this was scaff5, second alt hap, must have gotten the coords wrong
+hap2 chrom 17 self dot plot is wild, try and think what that means
+
+
+should also do these with granny
+
+ yea got the coords wrong
+ 
+left - 27549574 
+mid - 27842380
+right - 28115260
+  
+what the fuck
+where did that.. wut now the other alt hap is showing up, and that first one is there... ugh, is it real, are my breakpoints right or wrong.. start from scratch.. ha scratch
+- does it not work because of long arm / short arm stuff???
+- at what point do I just leave it??
+
+
+4 - 5:15
+
+
+3003564
+3296370
+3569250
+
+799692
+1202873
+1634803
+
+- need a script for calculating depth across sliding windows efficiently on a finished assembly
+- dot plots for granny smith
+
+hap1
+inversion on chromosome 11...
+
+thats it though
+
+I'm ignoring it, its time to move on, sure I have an inversion thats not real, whatever, still have the sequence
+
+
+nhl stuffssssss going to have to rewrite this one huh
+
+soooo we're final on everything? seems like it, right?
+
+final window read mapping check, also want to tag A/B onto end of extra scaffolds
+
+- table information for the final report
+- mapping RNA-seq to both apple and pear
+- do we liftover annotation or try an evidence based run for ribbon plots?
+
+
+issue downloading the datasets, stale filehandle?
+
+what to do, what to do...
+
+checking out RNA-seq map rate, seems a little low
+- try STAR
+- try hisat2 on combined reference
+
+4 diff treatments, resistant vs. susceptible varieties for a fungus
+
+have a gene expression table for treatments
+
+
+tomorrow:
+- start your HA talk, make outline
+
+ugh star cant run on the fucking ha cluster
+uhhh try the concatenated genome approach I guess, why don't we just de novo assembly reads also, what did I use for that?
+
+today:
+- outline HA talk
+- map RNA seq to both haplotypes
+- check EDTA was finished in apple
+- get EDTA running in pear
+- run orthofinder2 between the honeycrisp haplotypes
+- NEED TO GET AN ANNOTATION BUSCO NUMBER
+
+- final report figure:
+	- have to be black and white
+	- ribbon plot: "genomes are complete and collinear"
+
+thats right, need to do... ugh lets just do hpcc i trust resources more there
+
+what do I do as evidence? All my transcriptomes I have assembled
+10 threads, have all evidence and get arabidopsis 
+
+- split genome
+- copy ctl files into directories
+- edit genome=
+
+.. That should be it
+
+
+- sequencing update from HA re validation sample progress
+- Apple maturity 276 samples shipment from July 5th, not the pears shipped August 16th
+
+
+so im at about $7k, eh lets call it $8k in assets (cash / stonks / extra from car payment transfer)
+
+
+every month our post-tax income is:
+
+- 3465.59 + (2*1721.15)
+
+6907.89
+
+monthly expenses:
+mortgage - 2035
+rent - 650
+utilities - 150
+grocery - 600
+internet - 80
+water heater - 213
+car + ins - 413
+
+~4150
+
+nice, so 2800 left, am I missing something?
+
+So, we need to put aside $7k over the next 5 months
+
+so this month we have $1400 in disposable income, we can borrow from the grocery bill also, should not come to a full $600 this month
+
+- gas this month:
+AL trip - 500
+PA trip - 1500
+gas - $200 this month
+
+hotel on return trip - $120
+Brooks sitter - $100
+
+so $420
+
+so we are at $1000 disposable this month, much of that should go to christmas gifts
+
+so our home improvement budget is essentially zero this month
+
+Next month $150 going to rental car to get me to 
+
+well thats something I'll address later, just drop from hap1 table to match hap2
+
+I can train the models on what we got so far, then launch an ab initio in the morning. I have an orthofinder run for honeycrisp against itself right? that would be a nice figure
+
+ugh, wheres my snap / augustus training
+
+alrighty, now I can do things slowly and correctly!
+
+genome annotation, get the fasta right, test chromosome 1 with varying protein evidence
+
+stained glass and decontaminer
+
+Stained glass keeps outputting a blank pdf... is it just taking too long?
+
+need to blast against the genome all missing genes in genotypes, maybe we just misannotated
+
+supplement TF genes? see what MS says about them
+
+blast that against alllllll genomes, get a list and loop
+
+
+wait lets add it to the same table, why not? can do a bracket of which are biosynthesis and which are TFs, see if any differences
+
+how are we filtering out these blast results? whats our threshold to say its still "present" or not? Is it an issue with which copy?
+
+Lets say it needs to hit >50%	
+
+need to loop these,  so take all genes listed as absent and output if there are blast hits >50% length, need a table with lengths
+
+we have exactly 19 hits on everything
+
+are they the same 19?
+
+it is
+
+verrry interesting
+
+lets get the transcription factor genes in the list as well
+
+Lets get this friggin vaccinium pangenome paper submitted, lost the darnded to do lists for it huh
+
+making the figure 1 going to be fun..., sketch out the stuff
+
+
+shopping list:
+- Holiday cards
+- tape for gift wrap?
+- Kira present
+- Eric / Jess present
+- Lenny Present
+- Kasey Present
+- candy canes
+- hand warmers
+- Ava cash?
+- Puzzle for Pap?
+- 
+
+
+
+
+hmmmm exttracting the tables a little tough but we can do it, this will be fun
+
+also today:
+-transcriptome assemblies for malus
+- braker and maker with diff evidence on chromosome 1A/B
+
+
+driver= webdriver.Chrome('/Users/alanyocca/Documents/python_betting/chromedriver')
+driver.get(url)
+len(driver.find_elements_by_tag_name("table"))
+
+That gets all the matchups, I want to scrape huh... how do I want to organise the data?
+
+
+just a table with matchup, team, week, each roster spot
+
+can load things in as a dictionary of dictionaries and flatten (expand?) later for R analysis
+
+how to click through matchups...
+Hmmmm... loops through all players first, how to check when finished / what to increment by? ugh, check for a 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
